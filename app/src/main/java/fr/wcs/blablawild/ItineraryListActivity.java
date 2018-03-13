@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import org.w3c.dom.Text;
 
@@ -26,12 +27,15 @@ public class ItineraryListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_itinerary_list);
 
-        Intent intent = getIntent();
-        String destination_final = intent.getStringExtra(clefTwo);
+        //reception du parcelable
+        SearchModel object = (SearchModel) getIntent().getParcelableExtra("CREATOR");
 
-        String departure_final = intent.getStringExtra(clefOne);
+        String destination_final = object.destination;
+        String departure_final = object.departure;
+        String date_final = object.date;
 
         setTitle( departure_final + " >>> " + destination_final);
+        Toast.makeText(this, date_final, Toast.LENGTH_SHORT).show();
 
         ListView listTrip = findViewById(R.id.list_view);
         ArrayList<TripModel> results = new ArrayList<>();

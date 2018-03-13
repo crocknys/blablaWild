@@ -40,6 +40,12 @@ public class Carpage extends Activity  {
         final TextView model = findViewById(R.id.model);
         final  TextView speed = findViewById(R.id.speed);
 
+        brand.setText("");
+        km.setText("");
+        hour.setText("");
+        model.setText("");
+        speed.setText("");
+
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {

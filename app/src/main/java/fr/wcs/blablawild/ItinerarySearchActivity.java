@@ -15,9 +15,7 @@ import java.util.Locale;
 
 
 public class ItinerarySearchActivity extends AppCompatActivity {
-
     public static final String clefOne = "premiereclef";
-    public static final String clefTwo = "deuxiemeclef";
     Calendar myCalendar = Calendar.getInstance();
     EditText edittext ;
 
@@ -64,14 +62,18 @@ public class ItinerarySearchActivity extends AppCompatActivity {
 
         String destination = destinationBox.getText().toString();
         String departure = departureBox.getText().toString();
+        String date = myCalendar.getTime().toString();
 
         if ((destination.length() < 1 ) || (departure.length() <1 )) {
             Toast.makeText(this, fr.wcs.blablawild.R.string.error, Toast.LENGTH_SHORT).show();
         } else {
-            Intent goList = new Intent(ItinerarySearchActivity.this, ItineraryListActivity.class);
-            goList.putExtra(clefOne,departure);
-            goList.putExtra(clefTwo,destination);
-            ItinerarySearchActivity.this.startActivity(goList);
+            // somewhere inside an Activity
+            SearchModel dataToSend = new SearchModel(departure,destination,date);
+            Intent pont = new Intent(ItinerarySearchActivity.this, ItineraryListActivity.class);
+            pont.putExtra("CREATOR", dataToSend);
+            // using the (String name, Parcelable value) overload!
+            startActivity(pont);
+            // dataToSend is now passed to the new Activity
         }
     }
 
