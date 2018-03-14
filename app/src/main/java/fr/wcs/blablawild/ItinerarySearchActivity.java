@@ -59,10 +59,12 @@ public class ItinerarySearchActivity extends AppCompatActivity {
 
         TextView destinationBox = findViewById(R.id.destinationText);
         TextView departureBox = findViewById(R.id.departureText);
+        TextView dateCalendrier = findViewById(R.id.dateText);
 
         String destination = destinationBox.getText().toString();
         String departure = departureBox.getText().toString();
-        String date = myCalendar.getTime().toString();
+        String date = dateCalendrier.getText().toString();
+
 
         if ((destination.length() < 1 ) || (departure.length() <1 )) {
             Toast.makeText(this, fr.wcs.blablawild.R.string.error, Toast.LENGTH_SHORT).show();
